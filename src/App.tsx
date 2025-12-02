@@ -29,7 +29,6 @@ function App() {
 
       // Default to 'form' if at top
       if (scrollY > 300) {
-        let found = false;
         for (const section of sections) {
           const element = document.getElementById(section);
           if (element) {
@@ -40,7 +39,6 @@ function App() {
               rect.bottom >= window.innerHeight / 2
             ) {
               setActiveSuffix(section);
-              found = true;
               break;
             }
           }
