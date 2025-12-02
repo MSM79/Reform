@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import 'tailwindcss';
+
+* {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-black;
+  }
+}
+
+body {
+  background-color: white;
+  color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Custom scrollbar hide if needed, or just standard */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
