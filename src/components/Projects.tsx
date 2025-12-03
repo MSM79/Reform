@@ -1,71 +1,12 @@
 import { useState } from 'react';
 
-export interface Project {
-  id: string;
-  title: string;
-  image: string;
-  category: string;
-  size: string;
-  status: string;
-}
-const MOCK_PROJECTS: Project[] = [
-  {
-    id: '1',
-    title: 'Exploded Diagram Model',
-    image: 'https://picsum.photos/800/800?random=1',
-    category: 'Cultural',
-    size: 'L',
-    status: 'Concept',
-  },
-  {
-    id: '2',
-    title: 'Void Residence',
-    image: 'https://picsum.photos/800/800?random=2',
-    category: 'Residential',
-    size: 'M',
-    status: 'Built',
-  },
-  {
-    id: '3',
-    title: 'Urban Weaver',
-    image: 'https://picsum.photos/800/800?random=3',
-    category: 'Public',
-    size: 'XL',
-    status: 'Competition',
-  },
-  {
-    id: '4',
-    title: 'Linear Pavilion',
-    image: 'https://picsum.photos/800/800?random=4',
-    category: 'Installation',
-    size: 'S',
-    status: 'Built',
-  },
-  {
-    id: '5',
-    title: 'Urban Weaver',
-    image: 'https://picsum.photos/800/800?random=3',
-    category: 'Public',
-    size: 'XL',
-    status: 'Competition',
-  },
-  {
-    id: '6',
-    title: 'Linear Pavilion',
-    image: 'https://picsum.photos/800/800?random=4',
-    category: 'Installation',
-    size: 'S',
-    status: 'Built',
-  },
-];
+import { PROJECTS } from '../data/content';
 
 export const Projects = () => {
   const [filter, setFilter] = useState<'all' | 'Built' | 'Concept'>('all');
 
   const filteredProjects =
-    filter === 'all'
-      ? MOCK_PROJECTS
-      : MOCK_PROJECTS.filter((p) => p.status === filter);
+    filter === 'all' ? PROJECTS : PROJECTS.filter((p) => p.status === filter);
 
   return (
     <section id="projects" className="py-20 container mx-auto px-6 md:px-12">

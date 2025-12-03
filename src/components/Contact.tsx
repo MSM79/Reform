@@ -5,6 +5,7 @@ import {
   MessageCircle,
   Mail,
 } from 'lucide-react';
+import { CONTACT_INFO } from '../data/content';
 
 export const Contact = () => {
   return (
@@ -26,8 +27,8 @@ export const Contact = () => {
 
         {/* Values Column */}
         <div className="md:col-span-6 space-y-6 text-gray-700 italic font-light">
-          <p>No. 43, Hedayat 2, Hedayat St., Sharak Qods, Qom, Iran</p>
-          <p>+982532850836</p>
+          <p>{CONTACT_INFO.address}</p>
+          <p>{CONTACT_INFO.phone}</p>
 
           <div className="space-y-4">
             <p>
@@ -36,42 +37,18 @@ export const Contact = () => {
             </p>
 
             <div className="not-italic space-y-1">
-              <p>
-                <span className="italic text-gray-500">
-                  General, publication , exhibition (English / Persian) :
-                </span>{' '}
-                <br />
-                <a
-                  href="mailto:press@reformpractice.ir"
-                  className="hover:text-black underline"
-                >
-                  press@reformpractice.ir
-                </a>
-              </p>
-
-              <p>
-                <span className="italic text-gray-500">
-                  internship & employment (Persian / English) :
-                </span>{' '}
-                <br />
-                <a
-                  href="mailto:work@reformpractice.ir"
-                  className="hover:text-black underline"
-                >
-                  work@reformpractice.ir
-                </a>
-              </p>
-
-              <p>
-                <span className="italic text-gray-500">Order project :</span>{' '}
-                <br />
-                <a
-                  href="mailto:Order@reformpractice.ir"
-                  className="hover:text-black underline"
-                >
-                  Order@reformpractice.ir
-                </a>
-              </p>
+              {CONTACT_INFO.emails.map((item, index) => (
+                <p key={index}>
+                  <span className="italic text-gray-500">{item.label}</span>{' '}
+                  <br />
+                  <a
+                    href={`mailto:${item.email}`}
+                    className="hover:text-black underline"
+                  >
+                    {item.email}
+                  </a>
+                </p>
+              ))}
             </div>
           </div>
         </div>

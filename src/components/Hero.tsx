@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { HERO_TEXT } from '../data/content';
 
 interface HeroProps {
   inView: boolean;
@@ -14,7 +15,7 @@ export const Hero = ({ inView }: HeroProps) => {
         transition={{ duration: 0.5 }}
         className="text-gray-400 italic font-light mb-4 text-3xl absolute top-[30%] md:top-[35%] right-[40%]"
       >
-        beyond imagination
+        {HERO_TEXT}
       </motion.p>
 
       {/* Main Logo Container - Shared Layout */}
