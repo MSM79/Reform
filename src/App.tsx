@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { LayoutGroup } from 'framer-motion';
+import {
+  LayoutGroup,
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+} from 'framer-motion';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Section } from './components/Section';
@@ -11,6 +17,35 @@ import { About } from './components/About';
 function App() {
   const [activeSuffix, setActiveSuffix] = useState('');
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+
+  // Scroll-based animations for the vertical line
+  const { scrollYProgress } = useScroll();
+
+  // Smooth spring for smoother animations
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  // Transform scroll progress to various properties
+  const lineHeight = useTransform(smoothProgress, [0, 1], ['0%', '100%']);
+  const lineOpacity = useTransform(
+    smoothProgress,
+    [0, 0.1, 0.9, 1],
+    [0, 1, 1, 0],
+  );
+  const lineBlur = useTransform(smoothProgress, [0, 0.5, 1], [0, 2, 0]);
+  const lineWidth = useTransform(
+    smoothProgress,
+    [0, 0.3, 0.7, 1],
+    [1, 3, 3, 1],
+  );
+  const lineX = useTransform(
+    smoothProgress,
+    [0, 0.25, 0.5, 0.75, 1],
+    [0, -10, 0, 10, 0],
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +87,18 @@ function App() {
 
   return (
     <LayoutGroup>
-      <div className="bg-white min-h-screen text-black selection:bg-black selection:text-white">
+      <div className="bg-white min-h-screen text-black selection:bg-black selection:text-white relative">
+        {/* Animated scroll progress line */}
+        <motion.div
+          className="fixed top-0 left-[288px] z-50 bg-black origin-top pointer-events-none hidden md:block"
+          style={{
+            height: lineHeight,
+            opacity: lineOpacity,
+            width: lineWidth,
+            x: lineX,
+            filter: useTransform(lineBlur, (blur) => `blur(${blur}px)`),
+          }}
+        />
         <Header activeSuffix={activeSuffix} showContent={!isHeroVisible} />
 
         <Hero inView={isHeroVisible} />
@@ -73,11 +119,9 @@ function App() {
           <Section id="contact" title="Contact">
             <Contact />
           </Section>
-
-          <div className="h-[20vh]"></div>
         </main>
 
-        <footer className="px-6 py-12 text-xs text-gray-400 flex justify-between border-t border-gray-100 snap-start">
+        <footer className="md:px-6 px-4 py-12 text-xs text-gray-400 flex justify-between border-t border-gray-100 snap-start">
           <span>© 2024 Re:form Studio</span>
           <span>Designed by Mohammad Marandi</span>
         </footer>

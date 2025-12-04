@@ -1,4 +1,5 @@
 export const HERO_TEXT = 'beyond imagination';
+export const HERO_SUFFIXES = ['think', 'search', 'define', 'form'];
 
 export const ABOUT_CONTENT = {
   paragraph1: [
