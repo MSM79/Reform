@@ -13,6 +13,7 @@ import { Projects } from './components/Projects';
 import { Research } from './components/Research';
 import { Contact } from './components/Contact';
 import { About } from './components/About';
+import { BackToTop } from './components/BackToTop';
 
 function App() {
   const [activeSuffix, setActiveSuffix] = useState('');
@@ -88,9 +89,9 @@ function App() {
   return (
     <LayoutGroup>
       <div className="bg-white min-h-screen text-black selection:bg-black selection:text-white relative">
-        {/* Animated scroll progress line */}
+        {/* Animated scroll progress line - positioned between header area and content */}
         <motion.div
-          className="fixed top-0 left-[288px] z-50 bg-black origin-top pointer-events-none hidden md:block"
+          className="fixed top-0 left-[16%] z-40 bg-black origin-top pointer-events-none hidden md:block"
           style={{
             height: lineHeight,
             opacity: lineOpacity,
@@ -125,6 +126,7 @@ function App() {
           <span>© 2024 Re:form Studio</span>
           <span>Designed by Mohammad Marandi</span>
         </footer>
+        <BackToTop />
       </div>
     </LayoutGroup>
   );

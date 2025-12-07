@@ -1,19 +1,7 @@
 import { motion } from 'framer-motion';
 import { RESEARCH_ARTICLES } from '../data/content';
 import { BlurReveal } from './BlurReveal';
-
-const blurRevealVariants = {
-  hidden: {
-    opacity: 0,
-    filter: 'blur(10px)',
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    filter: 'blur(0px)',
-    y: 0,
-  },
-};
+import { blurRevealVariants } from '../utils/animations';
 
 export const Research = () => {
   return (

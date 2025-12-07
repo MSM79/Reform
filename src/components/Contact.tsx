@@ -7,19 +7,7 @@ import {
   Mail,
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data/content';
-
-const blurRevealVariants = {
-  hidden: {
-    opacity: 0,
-    filter: 'blur(10px)',
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    filter: 'blur(0px)',
-    y: 0,
-  },
-};
+import { blurRevealVariants } from '../utils/animations';
 
 export const Contact = () => {
   return (

@@ -5,15 +5,15 @@ import { useState, useEffect, useCallback } from 'react';
  * @param words - Array of words to cycle through
  * @param typingSpeed - Speed of typing each character (ms)
  * @param deletingSpeed - Speed of deleting each character (ms)
- * @param pauseDuration - Pause duration after completing a word (ms)
+ * @param pauseDuration - Pause duration after completing a word (ms). Can be a number or a function returning a number based on the word.
  */
 export const useTypewriter = (
   words: string[],
   typingSpeed = 100,
   deletingSpeed = 50,
-  pauseDuration = 1500,
+  pauseDuration: number | ((word: string) => number) = 1500,
 ) => {
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState(words[0] || '');
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -30,10 +30,15 @@ export const useTypewriter = (
       } else {
         // Word complete, pause before deleting
         setIsPaused(true);
+        const duration =
+          typeof pauseDuration === 'function'
+            ? pauseDuration(currentWord)
+            : pauseDuration;
+
         setTimeout(() => {
           setIsPaused(false);
           setIsDeleting(true);
-        }, pauseDuration);
+        }, duration);
       }
     } else {
       // Deleting

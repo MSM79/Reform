@@ -14,7 +14,12 @@ export const ABOUT_CONTENT = {
     { text: ' materials and context, and ultimately, to ', highlight: false },
     { text: 'Re:Form', highlight: true },
     {
-      text: ' space. We believe in exploring geometry and structure to Re:define and improve the humans experience.',
+      text: ' space. We believe in exploring geometry and structure to ',
+      highlight: false,
+    },
+    { text: 'Re:define ', highlight: true },
+    {
+      text: 'and improve the humans experience.',
       highlight: false,
     },
   ],
@@ -66,6 +71,7 @@ export interface Project {
   category: string;
   size: string;
   status: string;
+  video?: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -76,6 +82,7 @@ export const PROJECTS: Project[] = [
     category: 'Cultural',
     size: 'L',
     status: 'Concept',
+    video: '/video/video_2025-12-06_14-33-14.mp4',
   },
   {
     id: '2',
@@ -125,15 +132,15 @@ export const CONTACT_INFO = {
   emails: [
     {
       label: 'General, publication , exhibition (English / Persian) :',
-      email: 'press@reformpractice.ir',
+      email: 'press@reform.center',
     },
     {
       label: 'internship & employment (Persian / English) :',
-      email: 'work@reformpractice.ir',
+      email: 'work@reform.center',
     },
     {
       label: 'Order project :',
-      email: 'Order@reformpractice.ir',
+      email: 'Order@reform.center',
     },
   ],
 };

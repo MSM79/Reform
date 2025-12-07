@@ -2,19 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PROJECTS } from '../data/content';
 import { BlurReveal } from './BlurReveal';
-
-const blurRevealVariants = {
-  hidden: {
-    opacity: 0,
-    filter: 'blur(10px)',
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    filter: 'blur(0px)',
-    y: 0,
-  },
-};
+import { ProjectCard } from './ProjectCard';
 
 export const Projects = () => {
   const [filter, setFilter] = useState<'all' | 'Built' | 'Concept'>('all');
@@ -64,35 +52,14 @@ export const Projects = () => {
       </BlurReveal>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 gap-3"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: '-50px' }}
         transition={{ staggerChildren: 0.1 }}
       >
         {filteredProjects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            variants={blurRevealVariants}
-            transition={{
-              duration: 0.6,
-              delay: index * 0.1,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="group relative aspect-[4/3] overflow-hidden bg-gray-100 cursor-pointer"
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0"
-            />
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-              <h3 className="text-white text-lg font-bold">{project.title}</h3>
-              <p className="text-white/80 text-sm">
-                {project.status} • {project.size}
-              </p>
-            </div>
-          </motion.div>
+          <ProjectCard key={project.id} project={project} index={index} />
         ))}
       </motion.div>
     </section>

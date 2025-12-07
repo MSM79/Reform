@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import type { ReactNode } from 'react';
+import { blurRevealVariants } from '../utils/animations';
 
 interface BlurRevealProps {
   children: ReactNode;
@@ -8,19 +9,6 @@ interface BlurRevealProps {
   duration?: number;
   className?: string;
 }
-
-const blurRevealVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    filter: 'blur(10px)',
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    filter: 'blur(0px)',
-    y: 0,
-  },
-};
 
 export const BlurReveal = ({
   children,
