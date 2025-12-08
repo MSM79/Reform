@@ -17,6 +17,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
       window.clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
+
     if (project.video && videoRef.current) {
       videoRef.current
         .play()

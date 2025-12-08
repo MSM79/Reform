@@ -41,18 +41,6 @@ export const BrandOverlay = ({
               </motion.span>
             </AnimatePresence>
           </div>
-
-          {/* "Studio" only visible in Hero state */}
-          <motion.span
-            animate={{
-              opacity: isScrolled ? 0 : 1,
-              width: isScrolled ? 0 : 'auto',
-              marginLeft: isScrolled ? 0 : '1rem',
-            }}
-            className="text-[10vw] leading-none overflow-hidden"
-          >
-            Studio
-          </motion.span>
         </div>
       </motion.div>
 

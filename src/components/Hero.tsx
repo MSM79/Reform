@@ -38,23 +38,28 @@ export const Hero = ({ inView }: HeroProps) => {
           </div>
         </div>
 
-        {inView && (
-          <div className="absolute top-0 left-0 font-bold md:text-[10vw] text-[17vw] tracking-tighter mb-8 text-black flex items-baseline overflow-hidden">
-            <h1 className="leading-[0.8] font-bold tracking-tighter mr-2">
-              Re:
-            </h1>
+        <motion.div
+          className="absolute top-0 left-0 font-bold md:text-[10vw] text-[17vw] tracking-tighter mb-8 text-black flex items-baseline overflow-hidden"
+          initial={false}
+          animate={{
+            y: inView ? 0 : -120,
+            opacity: inView ? 1 : 0,
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 300,
+            damping: 30,
+            opacity: { duration: 0.2 },
+          }}
+        >
+          <h1 className="leading-[0.8] font-bold tracking-tighter mr-2">Re:</h1>
 
-            <motion.div
-              layoutId="shared-suffix"
-              className="w-[60vw] flex items-baseline"
-              transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-            >
-              <h1 className="leading-[0.8] font-bold tracking-tighter whitespace-nowrap">
-                {displayText || '\u200B'}
-              </h1>
-            </motion.div>
+          <div className="w-[60vw] flex items-baseline">
+            <h1 className="leading-[0.8] font-bold tracking-tighter whitespace-nowrap">
+              {displayText || '\u200B'}
+            </h1>
           </div>
-        )}
+        </motion.div>
       </div>
 
       {/* Navigation links - stay in hero, don't go to header */}
@@ -62,7 +67,7 @@ export const Hero = ({ inView }: HeroProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
         transition={{ duration: 0.2 }}
-        className="uppercase tracking-wider md:tracking-widest z-50"
+        className="uppercase tracking-wider md:tracking-widest z-50 ml-3"
       >
         <ul className="flex space-x-3 md:space-x-6 text-xs md:text-[1.3vw]">
           {['About', 'Projects', 'Research', 'Contact'].map((item) => (
