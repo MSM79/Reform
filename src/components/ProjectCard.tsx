@@ -6,9 +6,10 @@ import { blurRevealVariants } from '../utils/animations';
 interface ProjectCardProps {
   project: Project;
   index: number;
+  onClick: () => void;
 }
 
-export const ProjectCard = ({ project, index }: ProjectCardProps) => {
+export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const timeoutRef = useRef<number | null>(null);
 
@@ -48,6 +49,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
       className="group relative aspect-[4/3] overflow-hidden bg-gray-100 cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
     >
       <img
         src={project.image}

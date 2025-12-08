@@ -68,10 +68,16 @@ export interface Project {
   id: string;
   title: string;
   image: string;
+  images: string[];
   category: string;
   size: string;
   status: string;
   video?: string;
+  description: string;
+  year: string;
+  location: string;
+  area?: string;
+  client?: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -79,50 +85,116 @@ export const PROJECTS: Project[] = [
     id: '1',
     title: 'Exploded Diagram Model',
     image: 'https://picsum.photos/800/800?random=1',
+    images: [
+      'https://picsum.photos/1200/800?random=10',
+      'https://picsum.photos/1200/800?random=11',
+      'https://picsum.photos/1200/800?random=12',
+      'https://picsum.photos/1200/800?random=13',
+    ],
     category: 'Cultural',
     size: 'L',
     status: 'Concept',
     video: '/video/video_2025-12-06_14-33-14.mp4',
+    description:
+      'An exploration of spatial decomposition through architectural elements. This project investigates how traditional building components can be reimagined as independent sculptural forms, creating a dialogue between structure and void.',
+    year: '2024',
+    location: 'Tehran, Iran',
+    area: '2,500 sqm',
   },
   {
     id: '2',
     title: 'Void Residence',
     image: 'https://picsum.photos/800/800?random=2',
+    images: [
+      'https://picsum.photos/1200/800?random=20',
+      'https://picsum.photos/1200/800?random=21',
+      'https://picsum.photos/1200/800?random=22',
+      'https://picsum.photos/1200/800?random=23',
+    ],
     category: 'Residential',
     size: 'M',
     status: 'Built',
+    description:
+      'A residential project that celebrates emptiness as the primary design element. The house is organized around a series of voids that bring light deep into the living spaces while maintaining privacy from the urban context.',
+    year: '2023',
+    location: 'Qom, Iran',
+    area: '450 sqm',
+    client: 'Private',
   },
   {
     id: '3',
     title: 'Urban Weaver',
     image: 'https://picsum.photos/800/800?random=3',
+    images: [
+      'https://picsum.photos/1200/800?random=30',
+      'https://picsum.photos/1200/800?random=31',
+      'https://picsum.photos/1200/800?random=32',
+      'https://picsum.photos/1200/800?random=33',
+    ],
     category: 'Public',
     size: 'XL',
     status: 'Competition',
+    description:
+      'A proposal for urban regeneration that weaves together fragmented city fabric. The design creates a network of public spaces, green corridors, and mixed-use buildings that reconnect isolated neighborhoods.',
+    year: '2024',
+    location: 'Isfahan, Iran',
+    area: '15,000 sqm',
   },
   {
     id: '4',
     title: 'Linear Pavilion',
     image: 'https://picsum.photos/800/800?random=4',
+    images: [
+      'https://picsum.photos/1200/800?random=40',
+      'https://picsum.photos/1200/800?random=41',
+      'https://picsum.photos/1200/800?random=42',
+    ],
     category: 'Installation',
     size: 'S',
     status: 'Built',
+    description:
+      'A temporary installation exploring the relationship between geometry and perception. The pavilion uses a simple linear structure to create complex spatial experiences as visitors move through it.',
+    year: '2022',
+    location: 'Tehran, Iran',
+    area: '120 sqm',
   },
   {
     id: '5',
-    title: 'Urban Weaver',
-    image: 'https://picsum.photos/800/800?random=3',
-    category: 'Public',
-    size: 'XL',
-    status: 'Competition',
+    title: 'Brick Garden House',
+    image: 'https://picsum.photos/800/800?random=5',
+    images: [
+      'https://picsum.photos/1200/800?random=50',
+      'https://picsum.photos/1200/800?random=51',
+      'https://picsum.photos/1200/800?random=52',
+      'https://picsum.photos/1200/800?random=53',
+    ],
+    category: 'Residential',
+    size: 'M',
+    status: 'Built',
+    description:
+      'A courtyard house that reinterprets traditional Persian garden architecture. The design uses local brick as the primary material, creating a warm and textured environment that ages gracefully with time.',
+    year: '2021',
+    location: 'Kashan, Iran',
+    area: '380 sqm',
+    client: 'Private',
   },
   {
     id: '6',
-    title: 'Linear Pavilion',
-    image: 'https://picsum.photos/800/800?random=4',
-    category: 'Installation',
-    size: 'S',
-    status: 'Built',
+    title: 'Floating Museum',
+    image: 'https://picsum.photos/800/800?random=6',
+    images: [
+      'https://picsum.photos/1200/800?random=60',
+      'https://picsum.photos/1200/800?random=61',
+      'https://picsum.photos/1200/800?random=62',
+    ],
+    category: 'Cultural',
+    size: 'L',
+    status: 'Concept',
+    description:
+      'A museum concept that hovers above the landscape, minimizing its footprint while maximizing its visual impact. The design creates a journey through art and architecture that begins before entering the building.',
+    year: '2024',
+    location: 'Shiraz, Iran',
+    area: '8,000 sqm',
   },
 ];
 

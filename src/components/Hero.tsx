@@ -42,23 +42,47 @@ export const Hero = ({ inView }: HeroProps) => {
           className="absolute top-0 left-0 font-bold md:text-[10vw] text-[17vw] tracking-tighter mb-8 text-black flex items-baseline overflow-hidden"
           initial={false}
           animate={{
-            y: inView ? 0 : -120,
+            y: inView ? 0 : -80,
             opacity: inView ? 1 : 0,
+            scale: inView ? 1 : 0.85,
+            filter: inView ? 'blur(0px)' : 'blur(8px)',
           }}
           transition={{
-            type: 'spring',
-            stiffness: 300,
-            damping: 30,
-            opacity: { duration: 0.2 },
+            duration: 0.6,
+            ease: [0.22, 1, 0.36, 1],
+            opacity: { duration: 0.4 },
+            filter: { duration: 0.5 },
           }}
         >
-          <h1 className="leading-[0.8] font-bold tracking-tighter mr-2">Re:</h1>
+          <motion.h1
+            className="leading-[0.8] font-bold tracking-tighter mr-2"
+            animate={{
+              x: inView ? 0 : -20,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+              delay: inView ? 0.05 : 0,
+            }}
+          >
+            Re:
+          </motion.h1>
 
-          <div className="w-[60vw] flex items-baseline">
+          <motion.div
+            className="w-[60vw] flex items-baseline"
+            animate={{
+              x: inView ? 0 : 30,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+              delay: inView ? 0.1 : 0,
+            }}
+          >
             <h1 className="leading-[0.8] font-bold tracking-tighter whitespace-nowrap">
               {displayText || '\u200B'}
             </h1>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 

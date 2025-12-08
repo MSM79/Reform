@@ -19,6 +19,7 @@ import { BrandOverlay } from './components/BrandOverlay';
 function App() {
   const [activeSuffix, setActiveSuffix] = useState('');
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Scroll-based animations for the vertical line
   const { scrollYProgress } = useScroll();
@@ -101,7 +102,11 @@ function App() {
             filter: useTransform(lineBlur, (blur) => `blur(${blur}px)`),
           }}
         />
-        <Header activeSuffix={activeSuffix} showContent={!isHeroVisible} />
+        <Header
+          activeSuffix={activeSuffix}
+          showContent={!isHeroVisible}
+          hidden={isModalOpen}
+        />
 
         <Hero inView={isHeroVisible} />
 
@@ -111,7 +116,7 @@ function App() {
           </Section>
 
           <Section id="projects" title="Projects">
-            <Projects />
+            <Projects onModalChange={setIsModalOpen} />
           </Section>
 
           <Section id="research" title="Research">
@@ -127,7 +132,7 @@ function App() {
           <span>© 2024 Re:form Studio</span>
           <span>Designed by Mohammad Marandi</span>
         </footer>
-        <BackToTop />
+        <BackToTop hidden={isModalOpen} />
       </div>
     </LayoutGroup>
   );

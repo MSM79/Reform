@@ -39,3 +39,12 @@ h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* Utility class to hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
