@@ -14,7 +14,6 @@ import { Research } from './components/Research';
 import { Contact } from './components/Contact';
 import { About } from './components/About';
 import { BackToTop } from './components/BackToTop';
-import { BrandOverlay } from './components/BrandOverlay';
 
 function App() {
   const [activeSuffix, setActiveSuffix] = useState('');
