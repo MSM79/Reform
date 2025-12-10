@@ -18,7 +18,11 @@ import { BackToTop } from './components/BackToTop';
 function App() {
   const [activeSuffix, setActiveSuffix] = useState('');
   const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
+  const [isResearchModalOpen, setIsResearchModalOpen] = useState(false);
+
+  // Combined modal state for header/backtotop hiding
+  const isAnyModalOpen = isProjectModalOpen || isResearchModalOpen;
 
   // Scroll-based animations for the vertical line
   const { scrollYProgress } = useScroll();
@@ -89,13 +93,13 @@ function App() {
 
   return (
     <LayoutGroup>
-      <div className="bg-white min-h-screen text-black selection:bg-black selection:text-white relative">
-        {/* Animated scroll progress line - positioned between header area and content */}
+      <div className="bg-white min-h-screen text-black selection:bg-black selection:text-white">
+        {/* Animated scroll progress line - hidden when modal is open */}
         <motion.div
-          className="fixed top-0 left-[16%] z-40 bg-black origin-top pointer-events-none hidden md:block"
+          className="fixed top-0 left-[16%] z-20 bg-black origin-top pointer-events-none hidden md:block"
           style={{
             height: lineHeight,
-            opacity: lineOpacity,
+            opacity: isAnyModalOpen ? 0 : lineOpacity,
             width: lineWidth,
             x: lineX,
             filter: useTransform(lineBlur, (blur) => `blur(${blur}px)`),
@@ -104,7 +108,7 @@ function App() {
         <Header
           activeSuffix={activeSuffix}
           showContent={!isHeroVisible}
-          hidden={isModalOpen}
+          hidden={isAnyModalOpen}
         />
 
         <Hero inView={isHeroVisible} />
@@ -115,11 +119,11 @@ function App() {
           </Section>
 
           <Section id="projects" title="Projects">
-            <Projects onModalChange={setIsModalOpen} />
+            <Projects onModalChange={setIsProjectModalOpen} />
           </Section>
 
           <Section id="research" title="Research">
-            <Research />
+            <Research onModalChange={setIsResearchModalOpen} />
           </Section>
 
           <Section id="contact" title="Contact">
@@ -129,9 +133,17 @@ function App() {
 
         <footer className="md:px-6 px-4 py-12 text-xs text-gray-400 flex justify-between border-t border-gray-100 snap-start">
           <span>© 2024 Re:form Studio</span>
-          <span>Designed by Mohammad Marandi</span>
+          <span>
+            Designed by{' '}
+            <a
+              href="https://www.linkedin.com/in/mohammadmarandi"
+              target="_blank"
+            >
+              Mohammad Marandi
+            </a>
+          </span>
         </footer>
-        <BackToTop hidden={isModalOpen} />
+        <BackToTop hidden={isAnyModalOpen} />
       </div>
     </LayoutGroup>
   );

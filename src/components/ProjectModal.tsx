@@ -191,7 +191,7 @@ export const ProjectModal = ({
                   </div>
 
                   {/* Thumbnail strip - smaller on mobile, horizontal scroll */}
-                  <div className="mt-3 md:mt-4 flex gap-1.5 md:gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                  <div className="mt-3 md:mt-4 flex gap-1.5 md:gap-2 overflow-x-auto p-2 scrollbar-hide">
                     {project.images.map((img, index) => (
                       <button
                         key={index}
