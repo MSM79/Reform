@@ -13,17 +13,26 @@ export const Hero = ({ inView }: HeroProps) => {
 
   return (
     <section className="h-dvh w-full select-none flex flex-col items-start justify-center p-6 md:p-12 bg-white relative z-40 snap-start">
-      {/* "beyond imagination" text - fades out when scrolling */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : -20 }}
-        transition={{ duration: 0.5 }}
-        className="text-[rgb(30,30,30)] italic tracking-tighter font-light mb-4 text-sm md:text-3xl absolute top-[30%] top-[37%] md:top-[32%] right-[40%]"
-      >
-        {HERO_TEXT}
-      </motion.p>
-
       <div className="relative z-50">
+        {/* "beyond imagination" text - fades out when scrolling */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{
+            y: inView ? 0 : -30,
+            opacity: inView ? 1 : 0,
+            scale: inView ? 1 : 0.85,
+            filter: inView ? 'blur(0px)' : 'blur(8px)',
+          }}
+          transition={{
+            duration: 0.6,
+            ease: [0.22, 1, 0.36, 1],
+            opacity: { duration: 0.4 },
+            filter: { duration: 0.5 },
+          }}
+          className="text-[rgb(30,30,30)] italic tracking-tight font-light text-sm md:text-2xl -rotate-90 absolute origin-top-left top-0 left-0 -translate-y-full"
+        >
+          {HERO_TEXT}
+        </motion.p>
         <div
           className="font-bold md:text-[10vw] text-[17vw] tracking-tighter mb-8 text-transparent flex items-baseline overflow-hidden select-none pointer-events-none"
           aria-hidden="true"
@@ -39,7 +48,7 @@ export const Hero = ({ inView }: HeroProps) => {
         </div>
 
         <motion.div
-          className="absolute top-0 left-0 font-bold md:text-[10vw] text-[17vw] tracking-tighter mb-8 text-black flex items-baseline overflow-hidden"
+          className="absolute top-0 left-0 font-bold md:text-[10vw] text-[17vw]  tracking-tighter mb-8 text-black flex items-baseline overflow-hidden"
           initial={false}
           animate={{
             y: inView ? 0 : -80,

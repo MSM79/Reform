@@ -1,11 +1,5 @@
 import { motion } from 'framer-motion';
-import {
-  Instagram,
-  Twitter,
-  Linkedin,
-  MessageCircle,
-  Mail,
-} from 'lucide-react';
+import { Instagram, Linkedin, Mail } from 'lucide-react';
 import { CONTACT_INFO } from '../data/content';
 import { blurRevealVariants } from '../utils/animations';
 
@@ -33,8 +27,6 @@ export const Contact = () => {
           variants={blurRevealVariants}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p>ADDRESS:</p>
-          <p>PHONE:</p>
           <p>E M A I L:</p>
         </motion.div>
 
@@ -44,9 +36,6 @@ export const Contact = () => {
           variants={blurRevealVariants}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p>{CONTACT_INFO.address}</p>
-          <p>{CONTACT_INFO.phone}</p>
-
           <div className="space-y-4">
             <p>
               If you would like to contact us, please send an e-mail to one of
@@ -93,12 +82,6 @@ export const Contact = () => {
           href="#"
           className="p-2 bg-black text-white rounded-full hover:bg-gray-700 transition-colors"
         >
-          <Twitter size={16} />
-        </a>
-        <a
-          href="#"
-          className="p-2 bg-black text-white rounded-full hover:bg-gray-700 transition-colors"
-        >
           <Linkedin size={16} />
         </a>
         <a
@@ -106,12 +89,6 @@ export const Contact = () => {
           className="p-2 bg-black text-white rounded-full hover:bg-gray-700 transition-colors"
         >
           <Mail size={16} />
-        </a>
-        <a
-          href="#"
-          className="p-2 bg-black text-white rounded-full hover:bg-gray-700 transition-colors"
-        >
-          <MessageCircle size={16} />
         </a>
       </motion.div>
     </section>

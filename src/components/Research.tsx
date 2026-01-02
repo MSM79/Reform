@@ -59,7 +59,7 @@ export const Research = ({ onModalChange }: ResearchProps) => {
               }}
               onClick={() => handleArticleClick(article)}
             >
-              <h3 className="text-lg italic font-serif font-bold mb-4 leading-snug min-h-[3rem] group-hover:text-gray-600 transition-colors">
+              <h3 className="text-lg italic font-serif font-bold mb-4 leading-snug min-h-12 group-hover:text-gray-600 transition-colors">
                 {article.title}
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed text-justify line-clamp-4">

@@ -46,7 +46,7 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative aspect-[4/3] overflow-hidden bg-gray-100 cursor-pointer"
+      className="group relative aspect-4/3 overflow-hidden bg-gray-100 cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
